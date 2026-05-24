@@ -31,6 +31,10 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
+// Local images to be bundled correctly by Vite
+import heroBundleMockup from "./assets/images/hero_bundle_mockup_1779500670313.png";
+import childLearningImg from "./assets/images/child_learning_1779500266554.png";
+
 // Sub components
 import FacebookReviews from "./components/FacebookReviews";
 import NotebookCarousel from "./components/NotebookCarousel";
@@ -154,7 +158,7 @@ export default function App() {
           <div className="bg-amber-50/50 p-1 rounded-3xl border border-amber-200/30 max-w-md md:max-w-lg shadow-sm">
             <img 
               id="hero-bundle-image"
-              src="/src/assets/images/hero_bundle_mockup_1779500670313.png" 
+              src={heroBundleMockup} 
               alt="Kit Completo Grafismo Fonético" 
               referrerPolicy="no-referrer"
               className="w-full h-auto object-contain mx-auto max-h-[180px] sm:max-h-[220px]"
@@ -527,7 +531,7 @@ export default function App() {
               <div className="bg-white rounded-3xl border border-slate-200/80 shadow-md overflow-hidden p-5 flex flex-col justify-between space-y-4 transition-all hover:shadow-lg">
                 <div className="rounded-2xl overflow-hidden bg-slate-150 border border-slate-100 relative">
                   <img 
-                    src="/src/assets/images/child_learning_1779500266554.png" 
+                    src={childLearningImg} 
                     alt="Criança Praticando Método de Grafismo" 
                     referrerPolicy="no-referrer"
                     className="w-full h-52 object-cover"
