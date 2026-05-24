@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Quicksand:wght@300..700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Quicksand", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fredoka", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  
+  --color-brand-green: #10B981;
+  --color-brand-yellow: #FBBF24;
+}
+
+@layer base {
+  body {
+    @apply font-sans bg-[#FCFAF5] text-slate-800 antialiased selection:bg-amber-200 selection:text-amber-950;
+  }
+}
+
+.dashed-gold-border {
+  border: 2.5px dashed #D97706;
+}
+
+/* Custom bounce for buy buttons */
+@keyframes dynamicPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+.animate-pulse-btn {
+  animation: dynamicPulse 2s infinite ease-in-out;
+}

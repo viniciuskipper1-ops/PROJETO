@@ -1,0 +1,6 @@
+{
+  "name": "Grafismo Fonético - Kit de Atividades",
+  "description": "Página de vendas de alta conversão para o Kit de Atividades Grafismo Fonético, com recursos interativos, simulação de bônus, depoimentos e checkout.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
