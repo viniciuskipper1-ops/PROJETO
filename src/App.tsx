@@ -140,10 +140,10 @@ export default function App() {
     <div className="min-h-screen bg-[#FCFAF5] text-slate-800 selection:bg-amber-100 selection:text-amber-950">
       
       {/* Top Announcement bar */}
-      <div className="w-full bg-amber-500 text-amber-950 py-2.5 px-4 text-center text-sm font-black tracking-wide flex justify-center items-center gap-1.5 shadow-sm">
-        <Flame className="h-5 w-5 text-amber-900 shrink-0 animate-bounce" />
+      <div className="w-full bg-amber-600 text-[#291305] py-2.5 px-4 text-center text-sm font-black tracking-wide flex justify-center items-center gap-1.5 shadow-sm">
+        <Flame className="h-5 w-5 text-amber-950 shrink-0 animate-bounce" />
         <span className="flex items-center gap-1.5 flex-wrap justify-center font-extrabold">
-          De <span className="line-through text-amber-900/80">R$ 79,90</span> por apenas <span className="bg-white text-emerald-700 px-2.5 py-0.5 rounded-lg font-black shadow-xs">R$ 19,90</span> <span className="bg-red-600 text-white font-black px-2 py-0.5 rounded-md animate-pulse text-[11px] uppercase tracking-wider">SOMENTE HOJE!</span>
+          De <span className="line-through text-amber-950 font-black">R$ 79,90</span> por apenas <span className="bg-white text-emerald-800 px-2.5 py-0.5 rounded-lg font-black shadow-xs">R$ 19,90</span> <span className="bg-red-700 text-white font-black px-2 py-0.5 rounded-md animate-pulse text-[11px] uppercase tracking-wider">SOMENTE HOJE!</span>
         </span>
       </div>
 
@@ -160,6 +160,8 @@ export default function App() {
               id="hero-bundle-image"
               src={heroBundleMockup} 
               alt="Kit Completo Grafismo Fonético" 
+              width={500}
+              height={220}
               referrerPolicy="no-referrer"
               className="w-full h-auto object-contain mx-auto max-h-[180px] sm:max-h-[220px]"
             />
@@ -180,7 +182,7 @@ export default function App() {
           </h1>
 
           {/* Subtitle / time commitment - larger/bolder on mobile */}
-          <p className="font-sans font-extrabold text-[#D97706] text-lg sm:text-xl">
+          <p className="font-sans font-extrabold text-[#78350f] text-lg sm:text-xl">
             Com apenas <span className="underline decoration-wavy decoration-2 decoration-amber-500">10 minutos por dia</span>.
           </p>
         </div>
@@ -239,6 +241,7 @@ export default function App() {
               <button 
                 onClick={toggleMute}
                 type="button"
+                aria-label={isMuted ? "Ativar Áudio" : "Mudar para Mudo"}
                 className="absolute bottom-4 right-4 z-20 h-10 w-10 rounded-full bg-slate-900/70 hover:bg-slate-900/90 text-white flex items-center justify-center transition-all cursor-pointer shadow-lg hover:scale-105 active:scale-95"
                 title={isMuted ? "Ativar Áudio" : "Mudar para Mudo"}
               >
@@ -260,7 +263,7 @@ export default function App() {
                 onClick={handlePlay}
                 className="absolute inset-0 bg-slate-900/35 flex flex-col items-center justify-center cursor-pointer hover:bg-slate-900/20 transition-all z-20 group"
               >
-                <button className="h-16 w-16 rounded-full border-2 border-white bg-white/10 text-white flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 active:scale-95 cursor-pointer relative">
+                <button aria-label="Iniciar Reprodução do Vídeo" className="h-16 w-16 rounded-full border-2 border-white bg-white/10 text-white flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 active:scale-95 cursor-pointer relative">
                   <Play className="h-8 w-8 text-white fill-white ml-1" />
                 </button>
                 <div className="mt-4 bg-slate-950/80 px-4 py-1.5 rounded-full text-white text-xs font-semibold tracking-wide shadow-md">
@@ -331,104 +334,103 @@ export default function App() {
           </div>
 
           {/* Text below the main action */}
-          <p className="text-slate-600 text-sm sm:text-base max-w-4xl mx-auto pt-4 leading-relaxed font-semibold px-2">
-            Com o <strong className="text-slate-900 font-bold">Kit de Grafismo Fonético</strong>, baseado no <strong className="text-slate-900 font-bold">método americano</strong> de alfabetização, seu filho aprende a ler até <strong className="text-slate-900 font-bold text-emerald-600">10x mais rápido</strong> — de forma divertida, simples e eficaz, direto de casa!
+          <p className="text-slate-700 text-sm sm:text-base max-w-4xl mx-auto pt-4 leading-relaxed font-semibold px-2">
+            Com o <strong className="text-slate-900 font-bold">Kit de Grafismo Fonético</strong>, baseado no <strong className="text-slate-900 font-bold">método americano</strong> de alfabetização, seu filho aprende a ler até <strong className="text-slate-900 font-bold text-emerald-700">10x mais rápido</strong> — de forma divertida, simples e eficaz, direto de casa!
           </p>
         </div>
 
       </header>
 
-      {/* Down arrow decorator */}
-      <div className="flex justify-center my-6 text-amber-500">
-        <ArrowDown className="h-6 w-6 stroke-[3]" />
-      </div>
-
-      {/* 1. Combined Pain Points Section (Very precise and direct) */}
-      <section className="py-10 bg-white border-t border-b border-amber-100">
-        <div className="max-w-4xl mx-auto px-4 space-y-6">
-          <div className="text-center space-y-2">
-            <span className="text-red-600 text-[11px] sm:text-xs uppercase font-extrabold tracking-wider bg-red-50 px-3 py-1 rounded-full">
-              O Desafio dos Métodos Antigos
-            </span>
-            <h2 className="font-display font-black text-xl sm:text-2xl text-slate-900 tracking-tight leading-normal">
-              As tarefas de leitura viraram um sofrimento diário?
-            </h2>
-            <p className="text-slate-650 text-xs sm:text-sm max-w-2xl mx-auto font-medium text-slate-600">
-              A falta de estímulo fônico-motor na fase certa força a criança a fixar a palavra pelo visual chapado em vez do som sequencial, gerando ansiedade e frustração profunda.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
-            <div className="p-4 border border-dashed border-red-200 bg-red-50/10 rounded-2xl text-left">
-              <span className="text-xl block mb-1">😩 Sofrimento Familiar</span>
-              <p className="text-slate-650 text-wrap text-slate-600 text-xs font-semibold leading-relaxed">
-                Sessões de choro, cansaço mental e brigas estressantes todas as noites sobre a lição de casa.
-              </p>
-            </div>
-
-            <div className="p-4 border border-dashed border-red-200 bg-red-50/10 rounded-2xl text-left">
-              <span className="text-xl block mb-1">📉 Bloqueio Escolar</span>
-              <p className="text-slate-650 text-wrap text-slate-600 text-xs font-semibold leading-relaxed">
-                A dificuldade em acompanhar a turma diminui drasticamente a autoestima e confiança do pequeno.
-              </p>
-            </div>
-
-            <div className="p-4 border border-dashed border-red-200 bg-red-50/10 rounded-2xl text-left">
-              <span className="text-xl block mb-1">🧩 Silabação Lenta</span>
-              <p className="text-slate-650 text-wrap text-slate-600 text-xs font-semibold leading-relaxed">
-                A memorização visual cega de palavras inteiras torna o processo arrastado e livre de real sentido.
-              </p>
-            </div>
-          </div>
+      <main id="main-content">
+        {/* Down arrow decorator */}
+        <div className="flex justify-center my-6 text-amber-500">
+          <ArrowDown className="h-6 w-6 stroke-[3]" />
         </div>
-      </section>
 
-
-
-      {/* 2. Unified How it Works section (Extremely elegant & objective) */}
-      <section className="py-12 bg-[#F6F3EB] border-t border-b border-amber-100">
-        <div className="max-w-5xl mx-auto px-4 space-y-8">
-          
-          <div className="text-center max-w-2xl mx-auto space-y-2">
-            <span className="text-indigo-600 text-xs font-bold uppercase tracking-widest block font-mono">ENGENHARIA DIDÁTICA</span>
-            <h2 className="font-display font-black text-2xl text-slate-900 tracking-tight leading-tight font-sans">
-              Por que as atividades de Grafismo Fonético funcionam?
-            </h2>
-            <p className="text-slate-650 text-xs sm:text-sm font-semibold text-slate-600 max-w-xl mx-auto">
-              O método associa o trajeto motor do lápis ao som do fonema em tempo real. O cérebro fixa o traçado e a pronúncia simultaneamente, acelerando em até 10x o aprendizado.
-            </p>
-          </div>
-
-        {/* Swipeable notebook carousel */}
-        <NotebookCarousel />
-
-        {/* Theoretical Details (File 1 / Blue and Green panels translation) */}
-        <div className="space-y-6 max-w-4xl mx-auto mt-8">
-          
-          {/* Pruned Blue and Green cards merged into simple, highly-scannable bullet list */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-sky-50 rounded-2xl border border-sky-100 p-5 space-y-2 text-left">
-              <span className="font-bold text-[#0F172A] text-sm sm:text-base flex items-center gap-1.5 font-sans">🧠 Estímulo Cognitivo Ativo</span>
-              <p className="text-slate-705 text-slate-700 text-xs sm:text-sm leading-relaxed">
-                Ativa sinapses simultâneas nas áreas motora fina e auditiva. A criança aprende sem traumas, decorando sons individuais de forma leve e divertida.
+        {/* 1. Combined Pain Points Section (Very precise and direct) */}
+        <section className="py-10 bg-white border-t border-b border-amber-100">
+          <div className="max-w-4xl mx-auto px-4 space-y-6">
+            <div className="text-center space-y-2">
+              <span className="text-red-950 text-[11px] sm:text-xs uppercase font-extrabold tracking-wider bg-red-100 border border-red-200 px-3 py-1.5 rounded-full inline-block">
+                O Desafio dos Métodos Antigos
+              </span>
+              <h2 className="font-display font-black text-xl sm:text-2xl text-slate-900 tracking-tight leading-normal">
+                As tarefas de leitura viraram um sofrimento diário?
+              </h2>
+              <p className="text-slate-800 text-xs sm:text-sm max-w-2xl mx-auto font-bold leading-relaxed">
+                A falta de estímulo fônico-motor na fase certa força a criança a fixar a palavra pelo visual chapado em vez do som sequencial, gerando ansiedade e frustração profunda.
               </p>
             </div>
-            <div className="bg-emerald-50 rounded-2xl border border-emerald-100 p-5 space-y-2 text-left">
-              <span className="font-bold text-[#062F1F] text-sm sm:text-base flex items-center gap-1.5 font-sans">📈 Resultados em Poucos Dias</span>
-              <p className="text-slate-705 text-slate-700 text-xs sm:text-sm leading-relaxed">
-                Seu pequeno passa a identificar fonemas com facilidade, ganha confiança para soletrar novas palavras e sente orgulho ao folhear livrinhos.
-              </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+              <div className="p-4 border border-dashed border-red-300 bg-red-50/10 rounded-2xl text-left">
+                <span className="text-xl block mb-1">😩 Sofrimento Familiar</span>
+                <p className="text-slate-700 text-wrap text-xs font-bold leading-relaxed">
+                  Sessões de choro, cansaço mental e brigas estressantes todas as noites sobre a lição de casa.
+                </p>
+              </div>
+
+              <div className="p-4 border border-dashed border-red-300 bg-red-50/10 rounded-2xl text-left">
+                <span className="text-xl block mb-1">📉 Bloqueio Escolar</span>
+                <p className="text-slate-700 text-wrap text-xs font-bold leading-relaxed">
+                  A dificuldade em acompanhar a turma diminui drasticamente a autoestima e confiança do pequeno.
+                </p>
+              </div>
+
+              <div className="p-4 border border-dashed border-red-300 bg-red-50/10 rounded-2xl text-left">
+                <span className="text-xl block mb-1">🧩 Silabação Lenta</span>
+                <p className="text-slate-700 text-wrap text-xs font-bold leading-relaxed">
+                  A memorização visual cega de palavras inteiras torna o processo arrastado e livre de real sentido.
+                </p>
+              </div>
             </div>
           </div>
+        </section>
 
-          <div className="text-center pt-2 max-w-sm mx-auto font-sans">
-            <button
-              onClick={scrollToCheckout}
-              className="w-full py-3.5 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-black text-xs sm:text-sm uppercase tracking-wider rounded-xl hover:scale-102 transition-all cursor-pointer shadow-md font-sans"
-            >
-              Quero meu filho(a) Lendo!
-            </button>
-          </div>
+        {/* 2. Unified How it Works section (Extremely elegant & objective) */}
+        <section className="py-12 bg-[#F6F3EB] border-t border-b border-amber-100">
+          <div className="max-w-5xl mx-auto px-4 space-y-8">
+            
+            <div className="text-center max-w-2xl mx-auto space-y-2">
+              <span className="text-indigo-900 text-xs font-extrabold uppercase tracking-widest block font-mono">ENGENHARIA DIDÁTICA</span>
+              <h2 className="font-display font-black text-2xl text-slate-900 tracking-tight leading-tight font-sans">
+                Por que as atividades de Grafismo Fonético funcionam?
+              </h2>
+              <p className="text-slate-800 text-xs sm:text-sm font-bold max-w-xl mx-auto leading-relaxed">
+                O método associa o trajeto motor do lápis ao som do fonema em tempo real. O cérebro fixa o traçado e a pronúncia simultaneamente, acelerando em até 10x o aprendizado.
+              </p>
+            </div>
+
+          {/* Swipeable notebook carousel */}
+          <NotebookCarousel />
+
+          {/* Theoretical Details (File 1 / Blue and Green panels translation) */}
+          <div className="space-y-6 max-w-4xl mx-auto mt-8">
+            
+            {/* Pruned Blue and Green cards merged into simple, highly-scannable bullet list */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="bg-sky-50 rounded-2xl border border-sky-200 p-5 space-y-2 text-left">
+                <span className="font-extrabold text-[#0F172A] text-sm sm:text-base flex items-center gap-1.5 font-sans">🧠 Estímulo Cognitivo Ativo</span>
+                <p className="text-slate-850 text-slate-800 text-xs sm:text-sm leading-relaxed font-semibold">
+                  Ativa sinapses simultâneas nas áreas motora fina e auditiva. A criança aprende sem traumas, decorando sons individuais de forma leve e divertida.
+                </p>
+              </div>
+              <div className="bg-emerald-50 rounded-2xl border border-emerald-200 p-5 space-y-2 text-left">
+                <span className="font-extrabold text-[#062F1F] text-sm sm:text-base flex items-center gap-1.5 font-sans">📈 Resultados em Poucos Dias</span>
+                <p className="text-slate-850 text-slate-800 text-xs sm:text-sm leading-relaxed font-semibold">
+                  Seu pequeno passa a identificar fonemas com facilidade, ganha confiança para soletrar novas palavras e sente orgulho ao folhear livrinhos.
+                </p>
+              </div>
+            </div>
+
+            <div className="text-center pt-2 max-w-sm mx-auto font-sans">
+              <button
+                onClick={scrollToCheckout}
+                className="w-full py-3.5 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-black text-xs sm:text-sm uppercase tracking-wider rounded-xl hover:scale-102 transition-all cursor-pointer shadow-md font-sans"
+              >
+                Quero meu filho(a) Lendo!
+              </button>
+            </div>
         </div>
 
       </div>
@@ -451,64 +453,72 @@ export default function App() {
             <div className="p-5 border-2 border-dashed border-amber-500/30 rounded-2xl bg-[#FCFAF5] flex flex-col justify-between">
               <div className="space-y-2">
                 <span className="text-3xl block">🔤</span>
-                <h4 className="font-sans font-bold text-slate-850 text-sm sm:text-base leading-tight">
+                <h3 className="font-sans font-extrabold text-slate-900 text-sm sm:text-base leading-tight">
                   Reconhecimento de Sons e Letras
-                </h4>
-                <p className="text-slate-600 text-sm leading-relaxed font-semibold">
+                </h3>
+                <p className="text-slate-800 text-sm leading-relaxed font-bold">
                   Cada som é associado diretamente à imagem real e ao formato da letra, fortalecendo as conexões cerebrais de forma sólida, rápida e permanente.
                 </p>
               </div>
-              <span className="text-[9px] text-amber-600 font-mono tracking-widest block uppercase pt-3 font-bold">Modulo 01</span>
+              <div className="pt-3">
+                <span className="text-[10px] text-amber-950 bg-amber-200/85 border border-amber-300 font-mono tracking-wider uppercase px-2.5 py-1 rounded-md font-black inline-block">Modulo 01</span>
+              </div>
             </div>
 
             <div className="p-5 border-2 border-dashed border-amber-500/30 rounded-2xl bg-[#FCFAF5] flex flex-col justify-between">
               <div className="space-y-2">
                 <span className="text-3xl block">🧩</span>
-                <h4 className="font-sans font-bold text-slate-850 text-sm sm:text-base leading-tight">
+                <h3 className="font-sans font-extrabold text-slate-900 text-sm sm:text-base leading-tight">
                   Formação de Palavras do Cotidiano
-                </h4>
-                <p className="text-slate-600 text-sm leading-relaxed font-semibold">
+                </h3>
+                <p className="text-slate-800 text-sm leading-relaxed font-bold">
                   Exercícios dinâmicos que transformam a união de fonemas e o alinhamento de sílabas curtas em uma experiência palpável, intuitiva e natural.
                 </p>
               </div>
-              <span className="text-[9px] text-amber-600 font-mono tracking-widest block uppercase pt-3 font-bold">Modulo 02</span>
+              <div className="pt-3">
+                <span className="text-[10px] text-amber-950 bg-amber-200/85 border border-amber-300 font-mono tracking-wider uppercase px-2.5 py-1 rounded-md font-black inline-block">Modulo 02</span>
+              </div>
             </div>
 
             <div className="p-5 border-2 border-dashed border-amber-500/30 rounded-2xl bg-[#FCFAF5] flex flex-col justify-between">
               <div className="space-y-2">
                 <span className="text-3xl block">💡</span>
-                <h4 className="font-sans font-bold text-slate-850 text-sm sm:text-base leading-tight">
+                <h3 className="font-sans font-extrabold text-slate-900 text-sm sm:text-base leading-tight">
                   Compreensão e Leitura Fluida
-                </h4>
-                <p className="text-slate-600 text-sm leading-relaxed font-semibold">
+                </h3>
+                <p className="text-slate-800 text-sm leading-relaxed font-bold">
                   Exercícios sequenciados que desenvolvem o sentido prático do leitor sobre o que de fato está escutando, garantindo segurança na oralização da fala.
                 </p>
               </div>
-              <span className="text-[9px] text-amber-600 font-mono tracking-widest block uppercase pt-3 font-bold">Modulo 03</span>
+              <div className="pt-3">
+                <span className="text-[10px] text-amber-950 bg-amber-200/85 border border-amber-300 font-mono tracking-wider uppercase px-2.5 py-1 rounded-md font-black inline-block">Modulo 03</span>
+              </div>
             </div>
 
             <div className="p-5 border-2 border-dashed border-amber-500/30 rounded-2xl bg-[#FCFAF5] flex flex-col justify-between">
               <div className="space-y-2">
                 <span className="text-3xl block">🖼️</span>
-                <h4 className="font-sans font-bold text-slate-850 text-sm sm:text-base leading-tight">
+                <h3 className="font-sans font-extrabold text-slate-900 text-sm sm:text-base leading-tight">
                   Guia Passo-a-Passo Ilustrado
-                </h4>
-                <p className="text-slate-600 text-sm leading-relaxed font-semibold">
+                </h3>
+                <p className="text-slate-800 text-sm leading-relaxed font-bold">
                   Tutoriais lúdicos e referências pontilhadas perfeitas para guiar o pequeno de maneira absolutamente leve, sem necessidade de supervisão pesada.
                 </p>
               </div>
-              <span className="text-[9px] text-amber-600 font-mono tracking-widest block uppercase pt-3 font-bold">Modulo 04</span>
+              <div className="pt-3">
+                <span className="text-[10px] text-amber-950 bg-amber-200/85 border border-amber-300 font-mono tracking-wider uppercase px-2.5 py-1 rounded-md font-black inline-block">Modulo 04</span>
+              </div>
             </div>
 
           </div>
 
           {/* Visual Presentation of the Sheets (File 4) */}
           <div className="border-t border-slate-100 pt-10 text-center space-y-6">
-            <h3 className="font-display font-bold text-slate-800 text-lg sm:text-xl">
+            <h3 className="font-display font-black text-slate-850 text-slate-900 text-lg sm:text-xl">
               Conheça as atividades do Kit de Grafismo Fonético por dentro...
             </h3>
             
-            <p className="text-slate-600 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed font-semibold">
+            <p className="text-slate-800 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed font-bold">
               O design fônico exclusivo do material guia o pequeno no sentido exato do traçado, estimulando a coordenação motora fina ao mesmo tempo que fixa o fonema pronunciado de forma lúdica.
             </p>
 
@@ -518,13 +528,15 @@ export default function App() {
                   <img 
                     src="https://i.imgur.com/xKT324n.png" 
                     alt="Páginas do Caderno Atividades" 
+                    width={400}
+                    height={208}
                     referrerPolicy="no-referrer"
                     className="w-full h-52 object-cover"
                   />
                 </div>
                 <div>
-                  <h4 className="font-sans font-extrabold text-slate-800 text-sm sm:text-base">Associação Fonema-Desenho</h4>
-                  <p className="text-slate-600 text-sm mt-1.5 font-semibold leading-relaxed">Cada fonema possui setas direcionais coloridas e ilustrações cativantes correspondentes ao universo dos pequenos.</p>
+                  <h4 className="font-sans font-extrabold text-slate-900 text-sm sm:text-base">Associação Fonema-Desenho</h4>
+                  <p className="text-slate-700 text-sm mt-1.5 font-bold leading-relaxed">Cada fonema possui setas direcionais coloridas e ilustrações cativantes correspondentes ao universo dos pequenos.</p>
                 </div>
               </div>
 
@@ -533,13 +545,15 @@ export default function App() {
                   <img 
                     src={childLearningImg} 
                     alt="Criança Praticando Método de Grafismo" 
+                    width={400}
+                    height={208}
                     referrerPolicy="no-referrer"
                     className="w-full h-52 object-cover"
                   />
                 </div>
                 <div>
-                  <h4 className="font-sans font-extrabold text-slate-800 text-sm sm:text-base">Foco & Aprendizado Natural</h4>
-                  <p className="text-slate-600 text-sm mt-1.5 font-semibold leading-relaxed">Com apenas 10 minutos diários, a criança experimenta um progresso perceptível, gerando autonomia real na escrita e interpretação correta das palavras sem cansaço mental.</p>
+                  <h4 className="font-sans font-extrabold text-slate-900 text-sm sm:text-base">Foco & Aprendizado Natural</h4>
+                  <p className="text-slate-700 text-sm mt-1.5 font-bold leading-relaxed">Com apenas 10 minutos diários, a criança experimenta um progresso perceptível, gerando autonomia real na escrita e interpretação correta das palavras sem cansaço mental.</p>
                 </div>
               </div>
             </div>
@@ -617,32 +631,32 @@ export default function App() {
 
       {/* Simple usage steps (File 8) */}
       <section className="py-12 max-w-5xl mx-auto px-4 text-center space-y-8">
-        <h3 className="font-display font-black text-slate-800 text-xl sm:text-2xl">
+        <h2 className="font-display font-black text-slate-900 text-xl sm:text-2xl">
           Muito simples de começar a utilizar!
-        </h3>
+        </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
           
           <div className="p-6 bg-white border border-amber-200/55 rounded-3xl shadow-xs space-y-3">
             <span className="text-4xl block">📩</span>
-            <h4 className="font-sans font-bold text-slate-850 text-sm sm:text-base leading-tight">1. Chega no seu e-mail</h4>
-            <p className="text-slate-600 text-sm leading-relaxed font-semibold">
+            <h3 className="font-sans font-extrabold text-slate-900 text-sm sm:text-base leading-tight">1. Chega no seu e-mail</h3>
+            <p className="text-slate-700 text-sm leading-relaxed font-bold">
               Imediatamente após a confirmação simples de compra, você recebe o acesso digital com os arquivos completos organizados em formato PDF de alta resolução.
             </p>
           </div>
 
           <div className="p-6 bg-white border border-amber-200/55 rounded-3xl shadow-xs space-y-3">
             <span className="text-4xl block">🖨️</span>
-            <h4 className="font-sans font-bold text-slate-850 text-sm sm:text-base leading-tight">2. Você Imprime Livremente</h4>
-            <p className="text-slate-600 text-sm leading-relaxed font-semibold">
+            <h3 className="font-sans font-extrabold text-slate-900 text-sm sm:text-base leading-tight">2. Você Imprime Livremente</h3>
+            <p className="text-slate-700 text-sm leading-relaxed font-bold">
               Imprima as folhas sob demanda em qualquer impressora em casa ou na papelaria, quantas vezes desejar! O acesso ao material é <strong>totalmente vitalício</strong>.
             </p>
           </div>
 
           <div className="p-6 bg-white border border-amber-200/55 rounded-3xl shadow-xs space-y-3">
             <span className="text-4xl block">✏️</span>
-            <h4 className="font-sans font-bold text-slate-850 text-sm sm:text-base leading-tight">3. Os Pequenos Amam!</h4>
-            <p className="text-slate-600 text-sm leading-relaxed font-semibold">
+            <h3 className="font-sans font-extrabold text-slate-900 text-sm sm:text-base leading-tight">3. Os Pequenos Amam!</h3>
+            <p className="text-slate-700 text-sm leading-relaxed font-bold">
               Mãos à obra pedagógica! Estimule seu pequeno, sintonize com carinho os 10 minutinhos diários, e celebre orgulhosamente as primeiras sílabas soletradas sozinhas!
             </p>
           </div>
@@ -688,18 +702,18 @@ export default function App() {
                 </div>
 
                 <div className="text-center pt-2">
-                  <h4 className="font-sans font-black text-slate-800 text-sm">
+                  <h3 className="font-sans font-black text-slate-900 text-sm">
                     Caderno Alfabeto com Imagem
-                  </h4>
-                  <p className="text-slate-500 text-xs mt-1.5 leading-normal">
+                  </h3>
+                  <p className="text-slate-700 text-xs mt-1.5 leading-normal font-bold">
                     Associa visualmente cada letra de forma lúdica, acelerando a fixação mnemônica.
                   </p>
                 </div>
               </div>
 
               <div className="pt-4 border-t border-slate-100 text-center space-y-1">
-                <span className="text-[10px] text-slate-400 font-mono line-through block">De R$ 37,00</span>
-                <span className="text-xs text-emerald-600 font-black uppercase tracking-wider bg-emerald-50 px-2.5 py-0.5 rounded-full inline-block">HOJE: GRÁTIS</span>
+                <span className="text-xs text-slate-650 font-sans font-extrabold line-through block">De R$ 37,00</span>
+                <span className="text-xs text-emerald-800 font-black uppercase tracking-wider bg-emerald-100/90 border border-emerald-250 px-2.5 py-0.5 rounded-full inline-block">HOJE: GRÁTIS</span>
               </div>
             </div>
 
@@ -717,18 +731,18 @@ export default function App() {
                 </div>
 
                 <div className="text-center pt-2">
-                  <h4 className="font-sans font-black text-slate-800 text-sm">
+                  <h3 className="font-sans font-black text-slate-900 text-sm">
                     Caderno Quebra-Cabeça Alfabeto
-                  </h4>
-                  <p className="text-slate-500 text-xs mt-1.5 leading-normal">
+                  </h3>
+                  <p className="text-slate-700 text-xs mt-1.5 leading-normal font-bold">
                     Atividades de encaixe e recorte que estimulam o foco visual e a coordenação motora fina.
                   </p>
                 </div>
               </div>
 
               <div className="pt-4 border-t border-slate-100 text-center space-y-1">
-                <span className="text-[10px] text-slate-400 font-mono line-through block">De R$ 47,00</span>
-                <span className="text-xs text-emerald-600 font-black uppercase tracking-wider bg-emerald-50 px-2.5 py-0.5 rounded-full inline-block">HOJE: GRÁTIS</span>
+                <span className="text-xs text-slate-650 font-sans font-extrabold line-through block">De R$ 47,00</span>
+                <span className="text-xs text-emerald-800 font-black uppercase tracking-wider bg-emerald-100/90 border border-emerald-250 px-2.5 py-0.5 rounded-full inline-block">HOJE: GRÁTIS</span>
               </div>
             </div>
 
@@ -746,18 +760,18 @@ export default function App() {
                 </div>
 
                 <div className="text-center pt-2">
-                  <h4 className="font-sans font-black text-slate-800 text-sm">
+                  <h3 className="font-sans font-black text-slate-900 text-sm">
                     Formando Palavras
-                  </h4>
-                  <p className="text-slate-500 text-xs mt-1.5 leading-normal">
+                  </h3>
+                  <p className="text-slate-700 text-xs mt-1.5 leading-normal font-bold">
                     Sequência guiada inteligente para impulsionar a transição natural da sílaba isolada para vocabulários completos.
                   </p>
                 </div>
               </div>
 
               <div className="pt-4 border-t border-slate-100 text-center space-y-1">
-                <span className="text-[10px] text-slate-400 font-mono line-through block">De R$ 57,00</span>
-                <span className="text-xs text-emerald-600 font-black uppercase tracking-wider bg-emerald-50 px-2.5 py-0.5 rounded-full inline-block">HOJE: GRÁTIS</span>
+                <span className="text-xs text-slate-650 font-sans font-extrabold line-through block">De R$ 57,00</span>
+                <span className="text-xs text-emerald-800 font-black uppercase tracking-wider bg-emerald-100/90 border border-emerald-250 px-2.5 py-0.5 rounded-full inline-block">HOJE: GRÁTIS</span>
               </div>
             </div>
 
@@ -775,18 +789,18 @@ export default function App() {
                 </div>
 
                 <div className="text-center pt-2">
-                  <h4 className="font-sans font-black text-slate-800 text-sm">
+                  <h3 className="font-sans font-black text-slate-900 text-sm">
                     80 Atividades Para Melhorar a Escrita
-                  </h4>
-                  <p className="text-slate-500 text-xs mt-1.5 leading-normal">
+                  </h3>
+                  <p className="text-slate-700 text-xs mt-1.5 leading-normal font-bold">
                     Atividades exclusivas focadas no desenvolvimento da escrita, coordenação motora fina e firmeza do traçado.
                   </p>
                 </div>
               </div>
 
               <div className="pt-4 border-t border-slate-100 text-center space-y-1">
-                <span className="text-[10px] text-slate-400 font-mono line-through block">De R$ 39,00</span>
-                <span className="text-xs text-emerald-600 font-black uppercase tracking-wider bg-emerald-50 px-2.5 py-0.5 rounded-full inline-block">HOJE: GRÁTIS</span>
+                <span className="text-xs text-slate-655 text-slate-600 font-sans font-extrabold line-through block">De R$ 39,00</span>
+                <span className="text-xs text-emerald-800 font-black uppercase tracking-wider bg-emerald-100/90 border border-emerald-250 px-2.5 py-0.5 rounded-full inline-block">HOJE: GRÁTIS</span>
               </div>
             </div>
 
@@ -804,18 +818,18 @@ export default function App() {
                 </div>
 
                 <div className="text-center pt-2">
-                  <h4 className="font-sans font-black text-slate-800 text-sm">
+                  <h3 className="font-sans font-black text-slate-900 text-sm">
                     Caderno Alfabeto Traçado
-                  </h4>
-                  <p className="text-slate-500 text-xs mt-1.5 leading-normal">
+                  </h3>
+                  <p className="text-slate-700 text-xs mt-1.5 leading-normal font-bold">
                     Contornos fáceis e pautas largas perfeitas para desenvolver a caligrafia bastão bonita e firme desde cedo.
                   </p>
                 </div>
               </div>
 
               <div className="pt-4 border-t border-slate-100 text-center space-y-1">
-                <span className="text-[10px] text-slate-400 font-mono line-through block">De R$ 27,00</span>
-                <span className="text-xs text-emerald-600 font-black uppercase tracking-wider bg-emerald-50 px-2.5 py-0.5 rounded-full inline-block">HOJE: GRÁTIS</span>
+                <span className="text-xs text-slate-655 text-slate-600 font-sans font-extrabold line-through block">De R$ 27,00</span>
+                <span className="text-xs text-emerald-800 font-black uppercase tracking-wider bg-emerald-100/90 border border-emerald-250 px-2.5 py-0.5 rounded-full inline-block">HOJE: GRÁTIS</span>
               </div>
             </div>
 
@@ -833,18 +847,18 @@ export default function App() {
                 </div>
 
                 <div className="text-center pt-2">
-                  <h4 className="font-sans font-black text-slate-800 text-sm">
+                  <h3 className="font-sans font-black text-slate-900 text-sm">
                     Caderno Alfabeto com Carinhas
-                  </h4>
-                  <p className="text-slate-500 text-xs mt-1.5 leading-normal">
+                  </h3>
+                  <p className="text-slate-700 text-xs mt-1.5 leading-normal font-bold">
                     Treina a identificação emocional das crianças associando sílabas e rostos simpáticos.
                   </p>
                 </div>
               </div>
 
               <div className="pt-4 border-t border-slate-100 text-center space-y-1">
-                <span className="text-[10px] text-slate-400 font-mono line-through block">De R$ 49,00</span>
-                <span className="text-xs text-emerald-600 font-black uppercase tracking-wider bg-emerald-50 px-2.5 py-0.5 rounded-full inline-block">HOJE: GRÁTIS</span>
+                <span className="text-xs text-slate-655 text-slate-600 font-sans font-extrabold line-through block">De R$ 49,00</span>
+                <span className="text-xs text-emerald-800 font-black uppercase tracking-wider bg-emerald-100/90 border border-emerald-250 px-2.5 py-0.5 rounded-full inline-block">HOJE: GRÁTIS</span>
               </div>
             </div>
 
@@ -865,6 +879,8 @@ export default function App() {
               <img 
                 src="https://i.imgur.com/soipn5k.png" 
                 alt="Beatriz Souza - Autora" 
+                width={224}
+                height={224}
                 referrerPolicy="no-referrer"
                 className="w-48 h-48 sm:w-56 sm:h-56 object-cover rounded-2xl border-4 border-white shadow-lg relative z-10"
               />
@@ -872,7 +888,7 @@ export default function App() {
 
             {/* Author text info */}
             <div className="flex-1 space-y-4 text-center md:text-left">
-              <span className="text-emerald-700 font-extrabold uppercase text-[10px] sm:text-xs tracking-wider bg-emerald-100 px-3 py-1 rounded-full inline-block">
+              <span className="text-emerald-950 font-black uppercase text-[10px] sm:text-xs tracking-wider bg-emerald-100 border border-emerald-250 px-3 py-1.5 rounded-full inline-block">
                 Quem criou o método
               </span>
               
@@ -880,17 +896,17 @@ export default function App() {
                 <h2 className="font-display font-black text-2xl sm:text-3xl text-slate-900 tracking-tight">
                   Conheça a Autora
                 </h2>
-                <h4 className="text-amber-700 font-extrabold text-base sm:text-lg">
+                <h3 className="text-amber-850 font-extrabold text-base sm:text-lg">
                   Beatriz Souza
-                </h4>
+                </h3>
               </div>
 
-              <p className="text-slate-650 text-slate-600 text-xs sm:text-sm leading-relaxed font-semibold">
+              <p className="text-slate-800 text-xs sm:text-sm leading-relaxed font-bold">
                 Pedagoga por vocação com especialidade em Neuroeducação Infantil, Beatriz dedica sua vida a aproximar as pautas da linguagem e a fonética ao desenvolvimento saudável das crianças de forma leve, divertida e sem pressões mecânicas tradicionais.
               </p>
 
-              <p className="text-slate-650 text-slate-705 text-slate-700 text-xs sm:text-sm leading-relaxed font-semibold">
-                Após presenciar exaustivas sessões de choro em tarefas cotidianas e o travamento na autoestima infantil, ela elaborou o <strong className="text-slate-905 text-slate-900 font-bold">Kit Grafismo Fonético</strong>. Um método comprovado de autoestimulação fônico-motora para acelerar em até 10x a alfabetização natural dos pequenos sem cansar a mente deles.
+              <p className="text-slate-800 text-xs sm:text-sm leading-relaxed font-bold">
+                Após presenciar exaustivas sessões de choro em tarefas cotidianas e o travamento na autoestima infantil, ela elaborou o <strong className="text-slate-900 font-extrabold">Kit Grafismo Fonético</strong>. Um método comprovado de autoestimulação fônico-motora para acelerar em até 10x a alfabetização natural dos pequenos sem cansar a mente deles.
               </p>
             </div>
 
@@ -1208,6 +1224,8 @@ export default function App() {
           </button>
         </div>
       </section>
+
+      </main>
 
       {/* Footer Branding section (File 13) */}
       <footer className="bg-[#FAF8F2] text-slate-500 py-10 px-4 border-t border-amber-200/60 shadow-inner">
