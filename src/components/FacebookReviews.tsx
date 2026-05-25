@@ -17,7 +17,7 @@ const INITIAL_COMMENTS: Comment[] = [
   {
     id: "comment-1",
     name: "Gabriela Azevedo",
-    avatar: "https://i.imgur.com/O4KvgZk.jpg",
+    avatar: "https://i.imgur.com/XwkfmXM.png",
     comment: "Meu filho de 5 anos mal juntava duas letras e só se frustrava. Em **exatos 12 dias** com o Grafismo Fonético, ele simplesmente deslanchou e **começou a ler e escrever sozinho**. É chocante o resultado!",
     likes: 47,
     time: "28 min",
@@ -27,7 +27,7 @@ const INITIAL_COMMENTS: Comment[] = [
   {
     id: "comment-2",
     name: "Ana Oliveira",
-    avatar: "https://i.imgur.com/jyVWN27.jpg",
+    avatar: "https://i.imgur.com/u64nsR5.png",
     comment: "Gastei fortunas com fonoaudiologia e não tive metade do progresso que esse kit entregou em **apenas duas semanas**. Minha filha de 4 anos de fato abandonou as telas para ficar brincando de ler no caderno!",
     likes: 38,
     time: "55 min",
@@ -37,7 +37,7 @@ const INITIAL_COMMENTS: Comment[] = [
   {
     id: "comment-3",
     name: "Marisa Correia",
-    avatar: "https://i.imgur.com/gcXxdDz.jpg",
+    avatar: "https://i.imgur.com/u64nsR5.png",
     comment: "Fiquei desconfiada pelo preço, mas foi o melhor investimento que fiz. Meu filho superou o atraso de fala e escrita **em poucos dias**, recuperando toda a sua confiança e interesse em aprender.",
     likes: 52,
     time: "1 h",
@@ -100,16 +100,48 @@ export default function FacebookReviews() {
         </div>
       </div>
 
+      {/* Visual Screenshots of Reviews */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+        <div className="rounded-2xl overflow-hidden border border-amber-200/40 bg-amber-50/20 p-2 shadow-sm relative group">
+          <img 
+            src="https://i.imgur.com/XwkfmXM.png" 
+            alt="Depoimento de Sucesso" 
+            referrerPolicy="no-referrer"
+            loading="lazy"
+            className="w-full h-auto object-contain rounded-xl max-h-[350px] transition-transform duration-300 hover:scale-[1.02] mx-auto"
+          />
+          <div className="absolute top-4 right-4 bg-emerald-500/90 text-white text-[9px] font-bold uppercase py-0.5 px-2 rounded-full tracking-wider shadow-sm">
+            Resultado Real
+          </div>
+        </div>
+
+        <div className="rounded-2xl overflow-hidden border border-amber-200/40 bg-amber-50/20 p-2 shadow-sm relative group">
+          <img 
+            src="https://i.imgur.com/u64nsR5.png" 
+            alt="Feedback de Pais" 
+            referrerPolicy="no-referrer"
+            loading="lazy"
+            className="w-full h-auto object-contain rounded-xl max-h-[350px] transition-transform duration-300 hover:scale-[1.02] mx-auto"
+          />
+          <div className="absolute top-4 right-4 bg-emerald-500/90 text-white text-[9px] font-bold uppercase py-0.5 px-2 rounded-full tracking-wider shadow-sm">
+            Recomendado
+          </div>
+        </div>
+      </div>
+
       {/* Main Comment Area */}
       <div className="space-y-6">
         {comments.map((comment) => (
           <div key={comment.id} className="flex gap-3 p-3.5 sm:p-5 rounded-2xl bg-slate-50 border border-slate-200/70 shadow-xs hover:border-amber-300 transition-colors">
-            {/* Avatar block */}
+            {/* Avatar block - Real images optimized with smart CDN suffixes to load instantly */}
             <div className="shrink-0">
               <img
                 src={comment.avatar}
                 alt={comment.name}
+                width={56}
+                height={56}
                 referrerPolicy="no-referrer"
+                loading="lazy"
                 className="h-11 w-11 sm:h-14 sm:w-14 rounded-full object-cover border-2 border-white shadow-md"
               />
             </div>

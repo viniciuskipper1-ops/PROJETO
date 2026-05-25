@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { ChevronLeft, ChevronRight, BookOpen, Layers, CheckCircle2 } from "lucide-react";
-import { motion, AnimatePresence } from "motion/react";
 
 interface WorksheetPage {
   id: string;
