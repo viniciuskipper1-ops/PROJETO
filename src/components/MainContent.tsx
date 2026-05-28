@@ -9,7 +9,7 @@ import {
   ArrowDown,
 } from "lucide-react";
 
-const childLearningImg = "/child_learning.webp";
+const childLearningImg = "https://i.imgur.com/mTS9Z3A.png";
 
 export default function MainContent() {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
@@ -19,10 +19,13 @@ export default function MainContent() {
   };
 
   const scrollToCheckout = () => {
-    const el = document.getElementById("pricing-section-container");
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
+    // Wrap inside requestAnimationFrame to completely avoid layout thrashing / forced reflow
+    requestAnimationFrame(() => {
+      const el = document.getElementById("pricing-section-container");
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    });
   };
 
   const faqData: Omit<FAQItem, "id">[] = [
@@ -247,13 +250,13 @@ export default function MainContent() {
               <div className="bg-white rounded-3xl border border-slate-200/80 shadow-md overflow-hidden p-5 flex flex-col justify-between space-y-4 transition-all hover:shadow-lg">
                 <div className="rounded-2xl overflow-hidden bg-slate-150 border border-slate-100 relative">
                   <img 
-                    src="https://i.imgur.com/xKT324nl.png" 
+                    src="https://i.imgur.com/qYPOBIO.png" 
                     alt="Páginas do Caderno Atividades" 
                     width={400}
                     height={208}
                     referrerPolicy="no-referrer"
                     loading="lazy"
-                    className="w-full h-52 object-cover"
+                    className="w-full h-52 object-contain bg-slate-50"
                   />
                 </div>
                 <div>

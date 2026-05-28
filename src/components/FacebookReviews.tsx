@@ -100,34 +100,7 @@ export default function FacebookReviews() {
         </div>
       </div>
 
-      {/* Visual Screenshots of Reviews */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-        <div className="rounded-2xl overflow-hidden border border-amber-200/40 bg-amber-50/20 p-2 shadow-sm relative group">
-          <img 
-            src="https://i.imgur.com/XwkfmXM.png" 
-            alt="Depoimento de Sucesso" 
-            referrerPolicy="no-referrer"
-            loading="lazy"
-            className="w-full h-auto object-contain rounded-xl max-h-[350px] transition-transform duration-300 hover:scale-[1.02] mx-auto"
-          />
-          <div className="absolute top-4 right-4 bg-emerald-500/90 text-white text-[9px] font-bold uppercase py-0.5 px-2 rounded-full tracking-wider shadow-sm">
-            Resultado Real
-          </div>
-        </div>
 
-        <div className="rounded-2xl overflow-hidden border border-amber-200/40 bg-amber-50/20 p-2 shadow-sm relative group">
-          <img 
-            src="https://i.imgur.com/u64nsR5.png" 
-            alt="Feedback de Pais" 
-            referrerPolicy="no-referrer"
-            loading="lazy"
-            className="w-full h-auto object-contain rounded-xl max-h-[350px] transition-transform duration-300 hover:scale-[1.02] mx-auto"
-          />
-          <div className="absolute top-4 right-4 bg-emerald-500/90 text-white text-[9px] font-bold uppercase py-0.5 px-2 rounded-full tracking-wider shadow-sm">
-            Recomendado
-          </div>
-        </div>
-      </div>
 
       {/* Main Comment Area */}
       <div className="space-y-6">

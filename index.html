@@ -5,12 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Grafismo Fonético - Kit de Atividades</title>
     <!-- Speed up resource handshakes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://i.imgur.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://www.youtube.com" />
+    <link rel="preconnect" href="https://static.doubleclick.net" />
     
+    <!-- Primary stylesheet requested by user -->
+    <link rel="stylesheet" href="/assets/index-Dr8ko6LT.css">
+
+    <!-- LCP Video Poster Preload (Directly in HTML head, prioritized) -->
+    <link rel="preload" as="image" href="https://i.imgur.com/wMxUIHt.png" fetchpriority="high" referrerpolicy="no-referrer">
+
     <!-- LCP Preloads - Preload critical hero image at High Priority -->
-    <link rel="preload" as="image" href="/hero_bundle.webp" type="image/webp" fetchpriority="high" />
+    <link rel="preload" as="image" href="https://i.imgur.com/Fimfi0M.png" type="image/png" fetchpriority="high" referrerpolicy="no-referrer" />
+
+    <!-- LCP Video Preload - Preload video to prevent network cascading delays -->
+    <link rel="preload" href="https://i.imgur.com/wMxUIHt.mp4" as="video" type="video/mp4" fetchpriority="high" referrerpolicy="no-referrer" />
+
+    <!-- Font preloading to eliminate chaining bottlenecks -->
+    <link rel="preload" href="https://fonts.gstatic.com/s/quicksand/v31/6xKtdSFSAt0Fr156lk_arLk5Y_k.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="https://fonts.gstatic.com/s/fredoka/v13/X7nP4b81Anoc_R61M90qY8S7Dg.woff2" as="font" type="font/woff2" crossorigin />
 
     <!-- Google Fonts asynchronously loaded (non-blocking for instant first paint) -->
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700;900&family=Quicksand:wght@500;700&family=JetBrains+Mono:wght@500&display=swap" />
@@ -277,11 +292,12 @@
           <div class="bundle-card">
             <img 
               class="bundle-img"
-              src="/hero_bundle.webp" 
+              src="https://i.imgur.com/Fimfi0M.png" 
               alt="Kit Completo Grafismo Fonético" 
               width="500" 
               height="220" 
               fetchpriority="high"
+              referrerpolicy="no-referrer"
             />
           </div>
         </div>
@@ -295,41 +311,44 @@
           </p>
         </div>
 
-        <div class="video-wrapper">
-          <div class="video-box" style="background: #0f172a; border: 4px solid #f59e0b; position: relative;">
+        <div class="video-wrapper" style="max-width: 324px; width: 100%; margin: 24px auto 0 auto;">
+          <div class="video-box" style="background: #0f172a; border: 4px solid #f59e0b; position: relative; aspect-ratio: 9/16; border-radius: 24px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);">
             <iframe 
-              src="https://player.vimeo.com/video/1195213204?badge=0&autopause=0&player_id=0&app_id=58479" 
-              style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+              width="324" 
+              height="576" 
+              src="https://www.youtube.com/embed/Upyib64CrAU" 
+              title="Pv Grafismo Fonético V2 Kit Educação Kids" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
               referrerpolicy="strict-origin-when-cross-origin" 
-              title="Pv Grafismo Fonético V2 Kit Educação Kids (1)"
+              allowfullscreen
+              style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; border: 0;"
             ></iframe>
           </div>
         </div>
+
+
       </header>
     </div>
     <script>
-      // Desregistra qualquer Service Worker existente e limpa os caches para forçar a atualização imediata dos arquivos
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.getRegistrations().then((registrations) => {
-          for (const registration of registrations) {
-            registration.unregister().then(() => {
-              console.log('Service Worker desregistrado com sucesso para evitar cache obsoleto.');
-            });
-          }
-        });
-      }
-      if ('caches' in window) {
-        caches.keys().then((keys) => {
-          keys.forEach((key) => {
-            caches.delete(key).then(() => {
-              console.log('Cache limpo:', key);
+      // Desregistra qualquer Service Worker existente e limpa os caches após o carregamento inicial da página para eliminar latência de processamento de documentos
+      window.addEventListener('load', () => {
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.getRegistrations().then((registrations) => {
+            for (const registration of registrations) {
+              registration.unregister();
+            }
+          });
+        }
+        if ('caches' in window) {
+          caches.keys().then((keys) => {
+            keys.forEach((key) => {
+              caches.delete(key);
             });
           });
-        });
-      }
+        }
+      });
     </script>
-    <script src="https://player.vimeo.com/api/player.js" defer></script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

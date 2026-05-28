@@ -9,18 +9,21 @@ import {
   Check
 } from "lucide-react";
 
-// Static images from the public directory (Preloaded in index.html for instant first paint & 0ms LCP delay)
-const heroBundleMockup = "/hero_bundle.webp";
+// Primary hero image URL
+const heroBundleMockup = "https://i.imgur.com/Fimfi0M.png";
 
 // Sub components (Lazy Loaded to reduce initial bundle payload & split JS chunks)
 const MainContent = React.lazy(() => import("./components/MainContent"));
 
 export default function App() {
   const scrollToCheckout = () => {
-    const el = document.getElementById("pricing-section-container");
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
+    // Wrap inside requestAnimationFrame to completely avoid layout thrashing / forced reflow
+    requestAnimationFrame(() => {
+      const el = document.getElementById("pricing-section-container");
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    });
   };
 
   return (
@@ -28,9 +31,9 @@ export default function App() {
       
       {/* Top Announcement bar */}
       <div className="w-full bg-amber-600 text-[#291305] py-2.5 px-4 text-center text-sm font-black tracking-wide flex justify-center items-center gap-1.5 shadow-sm">
-        <Flame className="h-5 w-5 text-amber-955 shrink-0 animate-bounce" />
+        <Flame className="h-5 w-5 text-amber-955 shrink-0" />
         <span className="flex items-center gap-1.5 flex-wrap justify-center font-extrabold">
-          De <span className="line-through text-amber-950 font-black">R$ 79,90</span> por apenas <span className="bg-white text-emerald-800 px-2.5 py-0.5 rounded-lg font-black shadow-xs">R$ 19,90</span> <span className="bg-red-700 text-white font-black px-2 py-0.5 rounded-md animate-pulse text-[11px] uppercase tracking-wider">SOMENTE HOJE!</span>
+          De <span className="line-through text-amber-950 font-black">R$ 79,90</span> por apenas <span className="bg-white text-emerald-800 px-2.5 py-0.5 rounded-lg font-black shadow-xs">R$ 19,90</span> <span className="bg-red-700 text-white font-black px-2 py-0.5 rounded-md text-[11px] uppercase tracking-wider">SOMENTE HOJE!</span>
         </span>
       </div>
 
@@ -59,7 +62,7 @@ export default function App() {
         {/* Text elements and structure (Now placed after high-impact visual context) */}
         <div className="text-center max-w-4xl space-y-6 relative z-10 w-full font-sans mb-6">
           
-          <h1 className="font-display font-black text-2xl sm:text-3xl md:text-4xl text-slate-800 tracking-tight leading-[1.3] max-w-4xl mx-auto px-2 animate-fade-in">
+          <h1 className="font-display font-black text-2xl sm:text-3xl md:text-4xl text-slate-800 tracking-tight leading-[1.3] max-w-4xl mx-auto px-2">
             Descubra a{" "}
             <span className="inline-block relative px-3 py-1.5 bg-[#FEF9E6] border-l-2 border-r-2 border-amber-400 text-slate-800 font-bold mx-0.5 rounded-sm max-w-full text-balance">
               <span className="absolute left-0 top-0 bottom-0 flex items-center text-amber-500 font-bold -ml-1 select-none">|</span>
@@ -75,16 +78,19 @@ export default function App() {
           </p>
         </div>
 
-        {/* 2. Vimeo Interactive VSL Video Player */}
-        <div id="hero-vsl-container" className="w-full max-w-[420px] mx-auto mb-8 relative z-10 font-sans px-2 animate-fade-in">
+        {/* VSL Video Container */}
+        <div id="hero-vsl-container" className="w-full max-w-[324px] mx-auto mb-8 relative z-10 font-sans px-2">
           <div className="bg-slate-950 rounded-3xl overflow-hidden border-4 border-slate-900 shadow-2xl relative w-full aspect-[9/16]">
             <iframe 
-              id="vimeo-player-vsl"
-              src="https://player.vimeo.com/video/1195213204?badge=0&autopause=0&player_id=0&app_id=58479" 
-              className="absolute top-0 left-0 w-full h-full border-0" 
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+              width="324" 
+              height="576" 
+              src="https://www.youtube.com/embed/Upyib64CrAU" 
+              title="Pv Grafismo Fonético V2 Kit Educação Kids" 
+              frameBorder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
               referrerPolicy="strict-origin-when-cross-origin" 
-              title="Pv Grafismo Fonético V2 Kit Educação Kids (1)"
+              allowFullScreen
+              className="absolute top-0 left-0 w-full h-full object-cover border-0"
             ></iframe>
           </div>
         </div>
