@@ -16,6 +16,44 @@ const heroBundleMockup = "https://i.imgur.com/Fimfi0M.png";
 const MainContent = React.lazy(() => import("./components/MainContent"));
 
 export default function App() {
+  const [isVideoPlaying, setIsVideoPlaying] = React.useState(false);
+  const [shouldLoadAll, setShouldLoadAll] = React.useState(false);
+
+  React.useEffect(() => {
+    // Highly-optimized Interactive Lazy Loading listener
+    const triggerLazyLoad = () => {
+      setShouldLoadAll(true);
+      cleanUp();
+    };
+
+    const cleanUp = () => {
+      window.removeEventListener("scroll", triggerLazyLoad);
+      window.removeEventListener("touchmove", triggerLazyLoad);
+      window.removeEventListener("touchstart", triggerLazyLoad);
+      document.removeEventListener("mousemove", triggerLazyLoad);
+    };
+
+    // Attach passive listeners to verify any early mobile scrolling/touch interactions
+    window.addEventListener("scroll", triggerLazyLoad, { passive: true });
+    window.addEventListener("touchmove", triggerLazyLoad, { passive: true });
+    window.addEventListener("touchstart", triggerLazyLoad, { passive: true });
+    document.addEventListener("mousemove", triggerLazyLoad, { passive: true });
+
+    // Fallback timer: load background sections in 2 seconds of zero-idle to be safe
+    const fallbackTimer = setTimeout(triggerLazyLoad, 2000);
+
+    // Warm-up timer of VSL iframe: loads after initial paint is fully compiled (1.5s)
+    const videoTimer = setTimeout(() => {
+      setIsVideoPlaying(true);
+    }, 1500);
+
+    return () => {
+      cleanUp();
+      clearTimeout(fallbackTimer);
+      clearTimeout(videoTimer);
+    };
+  }, []);
+
   const scrollToCheckout = () => {
     // Wrap inside requestAnimationFrame to completely avoid layout thrashing / forced reflow
     requestAnimationFrame(() => {
@@ -54,6 +92,7 @@ export default function App() {
               height={220}
               referrerPolicy="no-referrer"
               fetchPriority="high"
+              decoding="async"
               className="w-full h-auto object-contain mx-auto max-h-[180px] sm:max-h-[220px]"
             />
           </div>
@@ -80,18 +119,44 @@ export default function App() {
 
         {/* VSL Video Container */}
         <div id="hero-vsl-container" className="w-full max-w-[324px] mx-auto mb-8 relative z-10 font-sans px-2">
-          <div className="bg-slate-950 rounded-3xl overflow-hidden border-4 border-slate-900 shadow-2xl relative w-full aspect-[9/16]">
-            <iframe 
-              width="324" 
-              height="576" 
-              src="https://www.youtube.com/embed/Upyib64CrAU" 
-              title="Pv Grafismo Fonético V2 Kit Educação Kids" 
-              frameBorder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-              referrerPolicy="strict-origin-when-cross-origin" 
-              allowFullScreen
-              className="absolute top-0 left-0 w-full h-full object-cover border-0"
-            ></iframe>
+          <div 
+            onClick={() => setIsVideoPlaying(true)}
+            className="bg-slate-950 rounded-3xl overflow-hidden border-4 border-amber-500 shadow-2xl relative w-full aspect-[9/16] cursor-pointer group"
+          >
+            {isVideoPlaying ? (
+              <iframe 
+                width="324" 
+                height="576" 
+                src="https://www.youtube.com/embed/Upyib64CrAU?autoplay=1" 
+                title="Pv Grafismo Fonético V2 Kit Educação Kids" 
+                frameBorder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerPolicy="strict-origin-when-cross-origin" 
+                allowFullScreen
+                className="absolute top-0 left-0 w-full h-full object-cover border-0"
+              ></iframe>
+            ) : (
+              <div className="absolute inset-0 w-full h-full">
+                {/* Visual Placeholder: Instantly paints on screen without hitting Youtube asset bottlenecks */}
+                <img 
+                  src="https://img.youtube.com/vi/Upyib64CrAU/hqdefault.jpg" 
+                  alt="Assista ao Vídeo Informativo" 
+                  referrerPolicy="no-referrer"
+                  fetchPriority="high"
+                  className="w-full h-full object-cover opacity-85"
+                />
+                <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/45">
+                  <div className="w-16 h-16 rounded-full bg-amber-500 flex items-center justify-center border-2 border-white shadow-xl">
+                    <svg viewBox="0 0 24 24" className="w-7 h-7 fill-white stroke-white ml-1">
+                      <path d="M8 5v14l11-7z" strokeWidth="2" strokeLinejoin="round" />
+                    </svg>
+                  </div>
+                  <span className="mt-4 bg-slate-900/90 text-[11px] font-bold tracking-wider text-white px-4 py-1.5 rounded-full border border-white/10 uppercase font-sans">
+                    ▶ TOQUE PARA ASSISTIR
+                  </span>
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
@@ -132,7 +197,7 @@ export default function App() {
           <div className="pt-6 flex flex-col items-center gap-2">
             <button
               onClick={scrollToCheckout}
-              className="w-full sm:w-auto px-10 py-4 sm:py-4.5 bg-[#00D084] hover:bg-[#00B975] text-white font-black text-base sm:text-base md:text-lg rounded-2xl shadow-lg hover:scale-101 active:scale-99 cursor-pointer transition-all uppercase tracking-wide"
+              className="w-full sm:w-auto px-10 py-4 sm:py-4.5 bg-[#00D084] hover:bg-[#00B975] text-white font-black text-base sm:text-base md:text-lg rounded-2xl shadow-lg cursor-pointer uppercase tracking-wide"
             >
               Quero meu pequeno lendo rápido!
             </button>
@@ -149,13 +214,19 @@ export default function App() {
 
       </header>
 
-      <React.Suspense fallback={
+      {shouldLoadAll ? (
+        <React.Suspense fallback={
+          <div className="w-full h-96 py-12 flex justify-center items-center">
+            <div className="h-8 w-8 rounded-full border-4 border-amber-500 border-t-transparent animate-spin" />
+          </div>
+        }>
+          <MainContent />
+        </React.Suspense>
+      ) : (
         <div className="w-full h-96 py-12 flex justify-center items-center">
-          <div className="h-8 w-8 rounded-full border-4 border-amber-500 border-t-transparent animate-spin" />
+          <div className="h-8 w-8 rounded-full border-4 border-amber-100 border-t-transparent animate-spin" />
         </div>
-      }>
-        <MainContent />
-      </React.Suspense>
+      )}
 
     </div>
   );

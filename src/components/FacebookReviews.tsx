@@ -105,7 +105,7 @@ export default function FacebookReviews() {
       {/* Main Comment Area */}
       <div className="space-y-6">
         {comments.map((comment) => (
-          <div key={comment.id} className="flex gap-3 p-3.5 sm:p-5 rounded-2xl bg-slate-50 border border-slate-200/70 shadow-xs hover:border-amber-300 transition-colors">
+          <div key={comment.id} className="flex gap-3 p-3.5 sm:p-5 rounded-2xl bg-slate-50 border border-slate-200/70 shadow-xs">
             {/* Avatar block - Real images optimized with smart CDN suffixes to load instantly */}
             <div className="shrink-0">
               <img
@@ -156,7 +156,7 @@ export default function FacebookReviews() {
                 <div className="flex gap-4">
                   <button
                     onClick={() => handleLike(comment.id)}
-                    className={`flex items-center gap-1 transition-colors hover:text-blue-600 ${
+                    className={`flex items-center gap-1 hover:text-blue-600 ${
                       comment.userLiked ? "text-blue-600 font-extrabold" : ""
                     }`}
                   >

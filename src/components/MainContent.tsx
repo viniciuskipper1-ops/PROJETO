@@ -147,10 +147,10 @@ export default function MainContent() {
               </div>
             </div>
 
-            <div className="text-center pt-2 max-w-sm mx-auto font-sans">
+            <div className="text-center pt-2 max-w-sm mx-auto font-sans font-extrabold">
               <button
                 onClick={scrollToCheckout}
-                className="w-full py-3.5 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-black text-xs sm:text-sm uppercase tracking-wider rounded-xl hover:scale-102 transition-all cursor-pointer shadow-md font-sans font-extrabold"
+                className="w-full py-3.5 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-black text-xs sm:text-sm uppercase tracking-wide rounded-xl cursor-pointer shadow-md font-sans font-extrabold"
               >
                 Quero meu filho(a) Lendo!
               </button>
@@ -247,7 +247,7 @@ export default function MainContent() {
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto pt-4 text-left">
-              <div className="bg-white rounded-3xl border border-slate-200/80 shadow-md overflow-hidden p-5 flex flex-col justify-between space-y-4 transition-all hover:shadow-lg">
+              <div className="bg-white rounded-3xl border border-slate-200/80 shadow-sm overflow-hidden p-5 flex flex-col justify-between space-y-4">
                 <div className="rounded-2xl overflow-hidden bg-slate-150 border border-slate-100 relative">
                   <img 
                     src="https://i.imgur.com/qYPOBIO.png" 
@@ -256,6 +256,7 @@ export default function MainContent() {
                     height={208}
                     referrerPolicy="no-referrer"
                     loading="lazy"
+                    decoding="async"
                     className="w-full h-52 object-contain bg-slate-50"
                   />
                 </div>
@@ -265,7 +266,7 @@ export default function MainContent() {
                 </div>
               </div>
 
-              <div className="bg-white rounded-3xl border border-slate-200/80 shadow-md overflow-hidden p-5 flex flex-col justify-between space-y-4 transition-all hover:shadow-lg">
+              <div className="bg-white rounded-3xl border border-slate-200/80 shadow-sm overflow-hidden p-5 flex flex-col justify-between space-y-4">
                 <div className="rounded-2xl overflow-hidden bg-slate-150 border border-slate-100 relative">
                   <img 
                     src={childLearningImg} 
@@ -274,6 +275,7 @@ export default function MainContent() {
                     height={208}
                     referrerPolicy="no-referrer"
                     loading="lazy"
+                    decoding="async"
                     className="w-full h-52 object-cover"
                   />
                 </div>
@@ -413,10 +415,10 @@ export default function MainContent() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             
             {/* Bonus 1 */}
-            <div className="bg-white p-5 rounded-3xl border border-amber-150 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+            <div className="bg-white p-5 rounded-3xl border border-amber-150 shadow-sm flex flex-col justify-between">
               <div className="space-y-4">
-                {/* 3D simulated book cover using simple gradients and CSS transforms */}
-                <div className="h-44 w-32 bg-gradient-to-br from-orange-400 to-amber-500 rounded-lg shadow-lg mx-auto flex flex-col justify-between p-3 text-white font-sans text-center transform hover:rotate-3 transition-transform relative border-r-4 border-amber-600">
+                {/* Simulated flat book cover */}
+                <div className="h-44 w-32 bg-gradient-to-br from-orange-400 to-amber-500 rounded-lg shadow-md mx-auto flex flex-col justify-between p-3 text-white font-sans text-center relative border-r-4 border-amber-600">
                   <span className="text-[7px] font-mono tracking-widest font-extrabold text-amber-200">INOVE KIDS</span>
                   <div>
                     <span className="text-xs font-black block leading-tight mt-1">CADERNO</span>
@@ -443,9 +445,9 @@ export default function MainContent() {
             </div>
 
             {/* Bonus 2 */}
-            <div className="bg-white p-5 rounded-3xl border border-amber-150 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+            <div className="bg-white p-5 rounded-3xl border border-amber-150 shadow-sm flex flex-col justify-between">
               <div className="space-y-4">
-                <div className="h-44 w-32 bg-gradient-to-br from-indigo-500 to-sky-600 rounded-lg shadow-lg mx-auto flex flex-col justify-between p-3 text-white font-sans text-center transform hover:rotate-3 transition-transform relative border-r-4 border-indigo-700">
+                <div className="h-44 w-32 bg-gradient-to-br from-indigo-500 to-sky-600 rounded-lg shadow-md mx-auto flex flex-col justify-between p-3 text-white font-sans text-center relative border-r-4 border-indigo-700">
                   <span className="text-[7px] font-mono tracking-widest font-extrabold text-indigo-200">INOVE KIDS</span>
                   <div>
                     <span className="text-xs font-black block leading-tight mt-1">QUEBRA</span>
@@ -472,9 +474,9 @@ export default function MainContent() {
             </div>
 
             {/* Bonus 3 */}
-            <div className="bg-white p-5 rounded-3xl border border-amber-150 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+            <div className="bg-white p-5 rounded-3xl border border-amber-150 shadow-sm flex flex-col justify-between">
               <div className="space-y-4">
-                <div className="h-44 w-32 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-lg shadow-lg mx-auto flex flex-col justify-between p-3 text-white font-sans text-center transform hover:rotate-3 transition-transform relative border-r-4 border-emerald-700">
+                <div className="h-44 w-32 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-lg shadow-md mx-auto flex flex-col justify-between p-3 text-white font-sans text-center relative border-r-4 border-emerald-700">
                   <span className="text-[7px] font-mono tracking-widest font-extrabold text-emerald-200">INOVE KIDS</span>
                   <div>
                     <span className="text-xs font-black block leading-tight mt-1">FORMANDO</span>
@@ -501,9 +503,9 @@ export default function MainContent() {
             </div>
 
             {/* Bonus 4 */}
-            <div className="bg-white p-5 rounded-3xl border border-amber-150 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+            <div className="bg-white p-5 rounded-3xl border border-amber-150 shadow-sm flex flex-col justify-between">
               <div className="space-y-4">
-                <div className="h-44 w-32 bg-gradient-to-br from-pink-500 to-rose-600 rounded-lg shadow-lg mx-auto flex flex-col justify-between p-3 text-white font-sans text-center transform hover:rotate-3 transition-transform relative border-r-4 border-pink-700">
+                <div className="h-44 w-32 bg-gradient-to-br from-pink-500 to-rose-600 rounded-lg shadow-md mx-auto flex flex-col justify-between p-3 text-white font-sans text-center relative border-r-4 border-pink-700">
                   <span className="text-[7px] font-mono tracking-widest font-extrabold text-pink-200">INOVE KIDS</span>
                   <div>
                     <span className="text-xs font-black block leading-tight mt-1">80 ATIVIDADES</span>
@@ -530,9 +532,9 @@ export default function MainContent() {
             </div>
 
             {/* Bonus 5 */}
-            <div className="bg-white p-5 rounded-3xl border border-amber-150 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+            <div className="bg-white p-5 rounded-3xl border border-amber-150 shadow-sm flex flex-col justify-between">
               <div className="space-y-4">
-                <div className="h-44 w-32 bg-gradient-to-br from-amber-500 to-yellow-600 rounded-lg shadow-lg mx-auto flex flex-col justify-between p-3 text-white font-sans text-center transform hover:rotate-3 transition-transform relative border-r-4 border-amber-700">
+                <div className="h-44 w-32 bg-gradient-to-br from-amber-500 to-yellow-600 rounded-lg shadow-md mx-auto flex flex-col justify-between p-3 text-white font-sans text-center relative border-r-4 border-amber-700">
                   <span className="text-[7px] font-mono tracking-widest font-extrabold text-amber-200">INOVE KIDS</span>
                   <div>
                     <span className="text-xs font-black block leading-tight mt-1">ALFABETO</span>
@@ -559,9 +561,9 @@ export default function MainContent() {
             </div>
 
             {/* Bonus 6 */}
-            <div className="bg-white p-5 rounded-3xl border border-amber-150 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+            <div className="bg-white p-5 rounded-3xl border border-amber-150 shadow-sm flex flex-col justify-between">
               <div className="space-y-4">
-                <div className="h-44 w-32 bg-gradient-to-br from-purple-500 to-cyan-600 rounded-lg shadow-lg mx-auto flex flex-col justify-between p-3 text-white font-sans text-center transform hover:rotate-3 transition-transform relative border-r-4 border-purple-700">
+                <div className="h-44 w-32 bg-gradient-to-br from-purple-500 to-cyan-600 rounded-lg shadow-md mx-auto flex flex-col justify-between p-3 text-white font-sans text-center relative border-r-4 border-purple-700">
                   <span className="text-[7px] font-mono tracking-widest font-extrabold text-purple-200">INOVE KIDS</span>
                   <div>
                     <span className="text-xs font-black block leading-tight mt-1">CARINHAS</span>
@@ -607,6 +609,7 @@ export default function MainContent() {
                 height={224}
                 referrerPolicy="no-referrer"
                 loading="lazy"
+                decoding="async"
                 className="w-48 h-48 sm:w-56 sm:h-56 object-cover rounded-2xl border-4 border-white shadow-lg relative z-10"
               />
             </div>
@@ -733,7 +736,7 @@ export default function MainContent() {
                   href="https://pay.hotmart.com/H105979275E?checkoutMode=10" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="w-full py-4 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-black text-xs sm:text-sm uppercase tracking-wider rounded-2xl block transition-all shadow-lg hover:shadow-emerald-500/20 hover:scale-102 cursor-pointer font-extrabold"
+                  className="w-full py-4 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-black text-xs sm:text-sm uppercase tracking-wider rounded-2xl block shadow-lg cursor-pointer font-extrabold text-center"
                 >
                   GARANTIR OFERTA PREMIUM
                 </a>
@@ -758,7 +761,7 @@ export default function MainContent() {
           </div>
 
           {/* Card 2: OFERTA BÁSICA / PRODUTO PRINCIPAL ONLY */}
-          <div className="bg-white rounded-3xl border border-slate-200 shadow-xl overflow-hidden flex flex-col md:flex-row relative hover:border-slate-300 transition-all">
+          <div className="bg-white rounded-3xl border border-slate-200 shadow-xl overflow-hidden flex flex-col md:flex-row relative">
             
             {/* Badge for Basic */}
             <div className="absolute top-4 left-4 bg-slate-100 text-slate-600 font-black text-[10px] px-3.5 py-1 rounded-full uppercase tracking-wider shadow-sm z-20">
@@ -817,7 +820,7 @@ export default function MainContent() {
                   href="https://pay.hotmart.com/B105979214S?checkoutMode=10" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="w-full py-4 bg-slate-700 hover:bg-slate-850 text-white font-black text-xs sm:text-sm uppercase tracking-wider rounded-2xl block transition-all shadow-md hover:scale-102 cursor-pointer text-center font-extrabold"
+                  className="w-full py-4 bg-slate-700 hover:bg-slate-850 text-white font-black text-xs sm:text-sm uppercase tracking-wider rounded-2xl block shadow-md cursor-pointer text-center font-extrabold"
                 >
                   GARANTIR ESSENCIAL
                 </a>
@@ -849,7 +852,8 @@ export default function MainContent() {
               height={128}
               referrerPolicy="no-referrer"
               loading="lazy"
-              className="mx-auto h-28 sm:h-32 w-auto object-contain transform hover:scale-105 transition-transform"
+              decoding="async"
+              className="mx-auto h-28 sm:h-32 w-auto object-contain"
             />
           </div>
 
@@ -900,22 +904,22 @@ export default function MainContent() {
             return (
               <div 
                 key={idx} 
-                className="bg-white rounded-2xl border border-slate-200 hover:border-amber-300 transition-all shadow-xs overflow-hidden"
+                className="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden"
               >
                 <button
                   onClick={() => toggleFaq(idx)}
-                  className="w-full p-4 text-left flex justify-between items-center gap-3 font-bold text-slate-800 text-sm sm:text-base hover:bg-amber-50/20 active:bg-amber-50/40 cursor-pointer"
+                  className="w-full p-4 text-left flex justify-between items-center gap-3 font-bold text-slate-800 text-sm sm:text-base cursor-pointer"
                 >
                   <span className="flex items-center gap-2">
                     <HelpCircle className="h-4.5 w-4.5 shrink-0 text-amber-600" />
                     {item.question}
                   </span>
-                  <ChevronDown className={`h-4.5 w-4.5 shrink-0 text-slate-400 transition-transform duration-300 ${isOpen ? "rotate-180 text-amber-500" : ""}`} />
+                  <ChevronDown className={`h-4.5 w-4.5 shrink-0 text-slate-400 ${isOpen ? "rotate-180 text-amber-500" : ""}`} />
                 </button>
 
                 <div
-                  className={`grid transition-[grid-template-rows,opacity] duration-300 ease-in-out ${
-                    isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                  className={`grid ${
+                    isOpen ? "grid-rows-[1fr] opacity-100" : "hidden"
                   }`}
                 >
                   <div className="overflow-hidden">
@@ -943,7 +947,7 @@ export default function MainContent() {
           </p>
           <button
             onClick={scrollToCheckout}
-            className="px-6 py-3 bg-slate-950 hover:bg-slate-900 text-white font-black text-xs uppercase tracking-wider rounded-xl hover:scale-103 transition-all cursor-pointer shadow-md inline-flex items-center gap-1.5"
+            className="px-6 py-3 bg-slate-950 hover:bg-slate-900 text-white font-black text-xs uppercase tracking-wider rounded-xl cursor-pointer shadow-md inline-flex items-center gap-1.5"
           >
             Quero Começar Hoje!
           </button>

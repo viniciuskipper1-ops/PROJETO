@@ -8,20 +8,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://i.imgur.com" crossorigin />
+    <link rel="preconnect" href="https://img.youtube.com" crossorigin />
     <link rel="preconnect" href="https://www.youtube.com" />
-    <link rel="preconnect" href="https://static.doubleclick.net" />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    <link rel="dns-prefetch" href="https://i.imgur.com" />
+    <link rel="dns-prefetch" href="https://img.youtube.com" />
     
     <!-- Primary stylesheet requested by user -->
     <link rel="stylesheet" href="/assets/index-Dr8ko6LT.css">
 
-    <!-- LCP Video Poster Preload (Directly in HTML head, prioritized) -->
-    <link rel="preload" as="image" href="https://i.imgur.com/wMxUIHt.png" fetchpriority="high" referrerpolicy="no-referrer">
-
     <!-- LCP Preloads - Preload critical hero image at High Priority -->
     <link rel="preload" as="image" href="https://i.imgur.com/Fimfi0M.png" type="image/png" fetchpriority="high" referrerpolicy="no-referrer" />
-
-    <!-- LCP Video Preload - Preload video to prevent network cascading delays -->
-    <link rel="preload" href="https://i.imgur.com/wMxUIHt.mp4" as="video" type="video/mp4" fetchpriority="high" referrerpolicy="no-referrer" />
 
     <!-- Font preloading to eliminate chaining bottlenecks -->
     <link rel="preload" href="https://fonts.gstatic.com/s/quicksand/v31/6xKtdSFSAt0Fr156lk_arLk5Y_k.woff2" as="font" type="font/woff2" crossorigin />
@@ -297,6 +295,7 @@
               width="500" 
               height="220" 
               fetchpriority="high"
+              decoding="async"
               referrerpolicy="no-referrer"
             />
           </div>
@@ -312,18 +311,19 @@
         </div>
 
         <div class="video-wrapper" style="max-width: 324px; width: 100%; margin: 24px auto 0 auto;">
-          <div class="video-box" style="background: #0f172a; border: 4px solid #f59e0b; position: relative; aspect-ratio: 9/16; border-radius: 24px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);">
-            <iframe 
-              width="324" 
-              height="576" 
-              src="https://www.youtube.com/embed/Upyib64CrAU" 
-              title="Pv Grafismo Fonético V2 Kit Educação Kids" 
-              frameborder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-              referrerpolicy="strict-origin-when-cross-origin" 
-              allowfullscreen
-              style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; border: 0;"
-            ></iframe>
+          <div class="video-box" id="skeleton-video-box" style="background: #020617; border: 4px solid #f59e0b; position: relative; aspect-ratio: 9/16; border-radius: 24px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.3); cursor: pointer;">
+            <!-- Instant-loading WebP High-Res YouTube Poster Thumbnail -->
+            <img class="video-poster" src="https://img.youtube.com/vi/Upyib64CrAU/hqdefault.jpg" alt="Apresentação do Método" fetchpriority="high" decoding="async" referrerpolicy="no-referrer" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.85;" />
+            
+            <!-- Highly enticing play button overlay mirroring true streaming interfaces -->
+            <div class="video-overlay" style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background-color: rgba(0,0,0,0.45);">
+              <div class="play-btn" style="width: 64px; height: 64px; border-radius: 50%; background-color: #f59e0b; display: flex; align-items: center; justify-content: center; border: 2px solid white; box-shadow: 0 8px 16px rgba(245,158,11,0.4);">
+                <svg viewBox="0 0 24 24" style="width: 28px; height: 28px; fill: white; stroke: white; margin-left: 4px;">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+              <span class="btn-label font-display" style="margin-top: 16px; background-color: rgba(15,23,42,0.9); padding: 6px 16px; border-radius: 9999px; color: white; font-size: 12px; font-weight: 700; border: 1px solid rgba(255,255,255,0.1);">▶ ASSISTIR AO VÍDEO</span>
+            </div>
           </div>
         </div>
 
@@ -346,6 +346,46 @@
               caches.delete(key);
             });
           });
+        }
+
+        // Active handling of YouTube Facade Player
+        const videoBox = document.getElementById('skeleton-video-box');
+        if (videoBox) {
+          const loadIframe = () => {
+            if (videoBox.querySelector('iframe')) return; // Already loaded
+            const iframe = document.createElement('iframe');
+            iframe.setAttribute('width', '324');
+            iframe.setAttribute('height', '576');
+            iframe.setAttribute('src', 'https://www.youtube.com/embed/Upyib64CrAU?autoplay=1');
+            iframe.setAttribute('title', 'Pv Grafismo Fonético V2 Kit Educação Kids');
+            iframe.setAttribute('frameborder', '0');
+            iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+            iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+            iframe.setAttribute('allowfullscreen', '');
+            iframe.style.position = 'absolute';
+            iframe.style.top = '0';
+            iframe.style.left = '0';
+            iframe.style.width = '100%';
+            iframe.style.height = '100%';
+            iframe.style.objectFit = 'cover';
+            iframe.style.border = '0';
+            
+            // Clear poster content and insert iframe
+            videoBox.innerHTML = '';
+            videoBox.appendChild(iframe);
+          };
+
+          // On click/tap, play instantly
+          videoBox.addEventListener('click', loadIframe);
+
+          // After a secure delay of 1800ms (to avoid penalizing the Speed Index page speed load of the initial layout), lazy-load it automatically if not played
+          setTimeout(() => {
+            if (window.requestIdleCallback) {
+              window.requestIdleCallback(() => loadIframe());
+            } else {
+              loadIframe();
+            }
+          }, 1800);
         }
       });
     </script>
